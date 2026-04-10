@@ -1,7 +1,7 @@
 import java.util.*;
 public class Main
 {
-    public static void main(String args[])
+    public static void main(String[] args)
 {
     int[] numbers = {2,7,11,15};
     int target = 9;
