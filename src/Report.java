@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 public abstract class Report {
      private String customerName;
      private String generatedDate;
@@ -6,7 +10,7 @@ public abstract class Report {
 
     public void setCustomerName(String customerName) {
         if(customerName == null || customerName.isEmpty())
-            throw new IllegalArgumentException("Customer Name cannot be null");
+            throw new InvalidReportException("Customer Name cannot be null");
         this.customerName = customerName;
     }
 
@@ -38,6 +42,9 @@ public abstract class Report {
          System.out.println("Report for " + customerName);
          System.out.println("Date created " + generatedDate);
          System.out.println("Report Id " + reportId);
+     }
+     public void loadFromFile(String filePath) throws FileNotFoundException {
+         new FileReader(filePath);
      }
 
 }

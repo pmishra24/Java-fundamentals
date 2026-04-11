@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Main
@@ -7,6 +8,31 @@ public class Main
         Reportable report = new LocationReport("Prashant Mishra",
                             "01-01-2024", "Dublin");
         report.generate();
+        try{
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e)
+        {
+            System.out.println("Sleep interrupted" + e.getMessage());
+        }
+
+        LocationReport lr =  new LocationReport();
+        try{
+            lr.loadFromFile("report.txt");
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("File not found " + e.getMessage());
+        }
+        finally{
+            System.out.println("This always runs");
+        }
+        try {
+            lr.setCustomerName(null);
+        }
+        catch (InvalidReportException e){
+            System.out.println("Error in setting customer name "+ e.getMessage());
+        }
 
         List<Reportable> reports = new ArrayList<>();
         reports.add(new LocationReport("Prashant",
