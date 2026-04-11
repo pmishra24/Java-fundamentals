@@ -19,5 +19,15 @@ public class CollectionsDemo {
 
         System.out.println("hashMap " + hashMap);
         System.out.println("hashSet "+ hashSet);
+
+        for(String key: hashMap.keySet())
+            System.out.println(key);
+        for(int i: hashMap.values())
+            System.out.println(i);
+        for(Map.Entry<String,Integer> e: hashMap.entrySet())
+            System.out.println("Key: " + e.getKey() + " Value: " + e.getValue());
+
+        for(String city: hashSet)
+            System.out.println(city);
     }
 }
