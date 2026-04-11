@@ -2,7 +2,7 @@ public abstract class Report {
      private String customerName;
      private String generatedDate;
      static int reportCounter = 0;
-     private int reportId;
+     private final int reportId;
 
     public void setCustomerName(String customerName) {
         if(customerName == null || customerName.isEmpty())
@@ -33,7 +33,7 @@ public abstract class Report {
          this.reportId = ++reportCounter;
      }
 
-     public void printHeader()
+     public final void printHeader()
      {
          System.out.println("Report for " + customerName);
          System.out.println("Date created " + generatedDate);
@@ -41,3 +41,4 @@ public abstract class Report {
      }
 
 }
+
