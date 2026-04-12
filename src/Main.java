@@ -49,7 +49,5 @@ public class Main
 
             report1.generate();
         }
-
-
     }
 }

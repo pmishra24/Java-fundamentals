@@ -1,13 +1,21 @@
+public abstract class Animal{
+    private String name;
 
-public class Animal {
-    public String soundType;
-
-    public String getSoundType() {
-        return soundType;
+    public String getName() {
+        return name;
     }
 
-    public Animal(String soundType)
+    public void setName(String name) {
+
+        if(name == null || name.isEmpty())
+            throw new AnimalException("Invalid animal name");
+        this.name = name;
+    }
+
+    public Animal(String name)
     {
-        this.soundType = soundType;
+        this.setName(name);
     }
+
+    public abstract void makeSound();
 }
