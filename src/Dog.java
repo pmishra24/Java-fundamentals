@@ -22,4 +22,9 @@ public class Dog extends Animal implements Trainable{
 
         System.out.println("Training completed");
     }
+    @Override
+    public String toString()
+    {
+        return "Dog "+getName();
+    }
 }

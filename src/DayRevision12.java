@@ -1,4 +1,4 @@
-public class DayRevision {
+public class DayRevision12 {
     public static void main(String[] args){
         try
         {
