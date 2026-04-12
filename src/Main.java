@@ -41,7 +41,15 @@ public class Main
                 Arrays.asList("Cisco","Huewai","ISR4431")));
 
         for(Reportable report1 : reports)
+        {
+            if(report1 instanceof LocationReport lrr)
+                System.out.println("Location "+lrr.location );
+            if(report1 instanceof OrderReport or)
+                System.out.println("Order Count"+or.getOrders().size());
+
             report1.generate();
+        }
+
 
     }
 }

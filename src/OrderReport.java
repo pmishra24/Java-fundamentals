@@ -1,6 +1,11 @@
 import java.util.*;
 public class OrderReport extends Report implements Reportable{
-    List<String> orders;
+    private List<String> orders;
+
+    public List<String> getOrders() {
+        return orders;
+    }
+
     public OrderReport(String customerName, String generatedDate, List<String> orders){
         super(customerName, generatedDate);
         this.orders = orders;
