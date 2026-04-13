@@ -6,12 +6,11 @@ public class Day3 {
     }
 
     public static boolean isPalindrome(String checkPalin){
-        char[] palinCharArray = checkPalin.toCharArray();
-        int end = palinCharArray.length - 1;
+        int end = checkPalin.length() - 1;
         int start = 0;
         for(start = 0; start < end; start++,end--)
         {
-            if(palinCharArray[start] != palinCharArray[end])
+            if(checkPalin.charAt(start) != checkPalin.charAt(end))
                 return false;
         }
         return true;
@@ -69,7 +68,7 @@ public class Day3 {
         }
         System.out.println("Reverse word: " + new String(chars));
 
-        String checkPalin = "";
+        String checkPalin = "hello";
         if(isPalindrome(checkPalin))
             System.out.println(checkPalin + " is palindrome");
         else
