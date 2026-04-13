@@ -32,5 +32,29 @@ public class Day3 {
         Integer c = 128;
         Integer d = 128;
         System.out.println(c.equals(d));
+
+        //String methods
+
+        String sentence = " Hello world from Java ";
+        sentence = sentence.trim();
+        sentence = sentence.toLowerCase();
+        String[] words = sentence.split( " ");
+
+        for(String word: words)
+            System.out.println(word);
+
+        System.out.println("Index of java in lowercased sentence is " + sentence.indexOf("java"));
+
+        //Two pointer technique
+        String word = "olleh";
+        char[] chars = word.toCharArray();
+        int end = chars.length - 1;
+        for(int start = 0; start < end; start++,end--)
+        {
+            char temp = chars[start];
+            chars[start] = chars[end];
+            chars[end] = temp;
+        }
+        System.out.println("Reverse word: " + new String(chars));
     }
 }
