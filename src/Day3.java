@@ -5,6 +5,18 @@ public class Day3 {
         System.out.println("Box contains "+ box.getType());
     }
 
+    public static boolean isPalindrome(String checkPalin){
+        char[] palinCharArray = checkPalin.toCharArray();
+        int end = palinCharArray.length - 1;
+        int start = 0;
+        for(start = 0; start < end; start++,end--)
+        {
+            if(palinCharArray[start] != palinCharArray[end])
+                return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args){
         Box<String> stringBox = new Box<>("String value");
         Box<Integer> integerBox = new Box<>(123);
@@ -56,5 +68,15 @@ public class Day3 {
             chars[end] = temp;
         }
         System.out.println("Reverse word: " + new String(chars));
+
+        String checkPalin = "";
+        if(isPalindrome(checkPalin))
+            System.out.println(checkPalin + " is palindrome");
+        else
+            System.out.println(checkPalin + " is not palindrome");
+
+
+
+
     }
 }
