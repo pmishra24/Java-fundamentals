@@ -17,5 +17,20 @@ public class Day3 {
         printBox(stringBox);
         printBox(integerBox);
         printBox(dogBox);
+
+        int primitiveInt = 5;
+        Integer wrappedInt = primitiveInt;
+        int backToInt = wrappedInt;
+
+        System.out.println("Wrapped Int " + wrappedInt);
+        System.out.println("Back To Int " + backToInt);
+
+        Integer a = 127;
+        Integer b = 127;
+        System.out.println(a==b);
+
+        Integer c = 128;
+        Integer d = 128;
+        System.out.println(c.equals(d));
     }
 }
