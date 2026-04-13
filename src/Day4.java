@@ -11,6 +11,22 @@ public class Day4 {
         return count;
     }
 
+    public static int maxSumSubarray(int[] arr, int k){
+        int sum = 0;
+        int maxSum = 0;
+        for(int j = 0; j<k; j++)
+            sum = sum + arr[j];
+        maxSum= sum;
+
+        for(int i=0,l=k; l<arr.length; i++,l++)
+        {
+            sum = sum +arr[l] - arr[i];
+            if(maxSum < sum)
+                maxSum = sum;
+        }
+        return maxSum;
+    }
+
     public static void removeDuplicatesTwoPointer(int[] arr){
         int i=0;
         for(int j= 0; j< arr.length;j++)
@@ -68,10 +84,17 @@ public class Day4 {
             System.out.println("No pair found");
 
         // Remove duplicates
-        int[] arr = {1, 2, 3, 4};
+        int[] arr = {2, 1, 5, 1, 3, 2};
+        Arrays.sort(arr);
         System.out.println(Arrays.toString(arr));
         System.out.println("Unique element count "+ uniqueCount(arr));
         removeDuplicatesOnePointer(arr);
         removeDuplicatesTwoPointer(arr);
+
+        //Sliding window
+        arr = new int[]{4, 2, 1, 7, 8, 1, 2, 8, 1, 0};
+        System.out.println(Arrays.toString(arr));
+        int k = 3;
+        System.out.println("Maximum sum: " + maxSumSubarray(arr, k));
     }
 }
