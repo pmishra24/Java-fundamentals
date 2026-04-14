@@ -1,7 +1,5 @@
 import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class Day4 {
     public static int uniqueCount(int[] arr){
@@ -124,5 +122,23 @@ public class Day4 {
         //Longest substring
         String s = "pwwkew";
         System.out.println("Longest substring in " + s + " is "+ longestSubstring(s));
+
+        // Comparator operator
+        Player p1 = new Player("Prashant", 500);
+        Player p2 = new Player("Sachin", 300);
+        Player p3 = new Player("Suyash", 500);
+        Player p4 = new Player("Bala Jee", 400);
+        Player p5 = new Player("Anmol", 450);
+
+        ArrayList<Player> players = new ArrayList<>();
+        players.add(p1);
+        players.add(p2);
+        players.add(p3);
+        players.add(p4);
+        players.add(p5);
+        players.sort((player1,player2) -> Integer.compare(player2.getScore(), player1.getScore()));
+        for (Player p : players)
+            System.out.println("Player name " + p.getName() + " Player Score: " + p.getScore());
+
     }
 }
