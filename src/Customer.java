@@ -1,8 +1,8 @@
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-public abstract class Report {
+public class Customer {
+    private ArrayList<Report> report;
     private String customerName;
-    private final LocalDateTime date;
 
     public String getCustomerName() {
         return customerName;
@@ -15,13 +15,16 @@ public abstract class Report {
         this.customerName = customerName;
     }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-    public Report(){
-        this.date = LocalDateTime.now();
+    public ArrayList<Report> getReport() {
+        return report;
     }
 
-    public abstract void generate();
+    public void setReport(ArrayList<Report> report) {
+        this.report = report;
+    }
+
+    public Customer(String customerName)
+    {
+        this.setCustomerName(customerName);
+    }
 }
-
