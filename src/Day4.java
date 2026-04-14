@@ -1,4 +1,7 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class Day4 {
     public static int uniqueCount(int[] arr){
@@ -25,6 +28,27 @@ public class Day4 {
                 maxSum = sum;
         }
         return maxSum;
+    }
+
+    public static int longestSubstring(String s){
+        HashSet<Character> charSet= new HashSet<>();
+        int longestSubString = 0;
+
+        for(int i=0,j = 0 ; i< s.length();)
+        {
+            if(charSet.contains(s.charAt(i)))
+            {
+                charSet.remove(s.charAt(j));
+                j++;
+                continue;
+            }
+            else
+                charSet.add(s.charAt(i));
+            if(charSet.size() > longestSubString)
+                longestSubString = charSet.size();
+            i++;
+        }
+        return longestSubString;
     }
 
     public static void removeDuplicatesTwoPointer(int[] arr){
@@ -96,5 +120,9 @@ public class Day4 {
         System.out.println(Arrays.toString(arr));
         int k = 3;
         System.out.println("Maximum sum: " + maxSumSubarray(arr, k));
+
+        //Longest substring
+        String s = "pwwkew";
+        System.out.println("Longest substring in " + s + " is "+ longestSubstring(s));
     }
 }
