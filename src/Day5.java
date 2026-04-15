@@ -148,6 +148,36 @@ public class Day5 {
         return number;
     }
 
+    public static int maxProduct(int[] arr) {
+        int max = arr[1];
+        int secondMax = arr[0];
+        for(int a: arr){
+            if(max > 0 || a > 0) {
+                if (max < a) {
+                    secondMax = max;
+                    max = a;
+
+                } else if (secondMax < a)
+                    secondMax = a;
+            }
+            else{
+                if (max > a) {
+                    secondMax = max;
+                    max = a;
+
+                } else if (secondMax > a)
+                    secondMax = a;
+            }
+
+        }
+        return max* secondMax;
+    }
+
+    public static int maxProductBetter(int[] arr) {
+        Arrays.sort(arr);
+        return Math.max(arr[0] * arr[1], arr[arr.length -1] * arr[arr.length-2]);
+    }
+
 
 
     public static void main(String[] args){
@@ -207,6 +237,14 @@ public class Day5 {
             System.out.println("There is no single element in array");
         else
             System.out.println("Single element in array is : " + result);
+
+
+        a = new int[]{-5, -3, -1, -2};
+
+        System.out.println(Arrays.toString(a));
+        System.out.println("Maximum product is " + maxProduct(a));
+        System.out.println("Maximum product is " + maxProductBetter(a));
+
     }
 
 }
