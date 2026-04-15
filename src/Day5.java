@@ -33,6 +33,34 @@ public class Day5 {
         return hashMap;
     }
 
+    public static int subarraySum(int[] arr, int k) {
+        int count = 0;
+        for(int i = 0; i< arr.length; i++)
+        {
+            int sum = 0;
+            for(int j = i;j <arr.length; j++ ){
+                sum = sum + arr[j];
+                if(sum == k)
+                    count ++;
+            }
+        }
+        return count;
+    }
+
+    public static int subarraySumOptimised(int[] arr, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        int sum = 0, count = 0;
+
+        for(int num : arr) {
+            sum += num;
+            count += map.getOrDefault(sum - k, 0);
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
+        }
+        return count;
+    }
+
+
     public static void main(String[] args){
 
         String word = "aabbcddeff";
@@ -50,6 +78,16 @@ public class Day5 {
                 System.out.print(t + " ");
             System.out.println();
         }
+
+        int[] a = {1, -1,1,1, 3, 3};
+        int k= 6;
+        System.out.println(Arrays.toString(a));
+        System.out.println("Subarrays with sum " + k + " is " + subarraySum(a, k));
+
+        System.out.println("Subarrays with sum " + k + " is " + subarraySumOptimised(a, k));
+
+
+
 
     }
 
