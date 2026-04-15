@@ -1,7 +1,7 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.awt.image.AreaAveragingScaleFilter;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Day5 {
     public static char firstNonRepeatingCharacter(String word){
@@ -45,6 +45,36 @@ public class Day5 {
             }
         }
         return count;
+    }
+
+    public static boolean checkAnagram(String s, String t){
+        char[] c = s.toCharArray();
+        Arrays.sort(c);
+        s = Arrays.toString(c);
+        c= t.toCharArray();
+        Arrays.sort(c);
+        t = Arrays.toString(c);
+
+        return s.equals(t);
+    }
+
+    public static boolean checkAnagramOptimised(String s, String t){
+        if(s.length() != t.length()) return false;
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+
+        char[] c = s.toCharArray();
+        for(char a: c)
+            hashMap.put(a, hashMap.getOrDefault(a, 0) + 1);
+        c= t.toCharArray();
+        for(char a: c)
+           hashMap.put(a, hashMap.getOrDefault(a, 0) - 1);
+
+        for(char i: hashMap.keySet()){
+            if(!hashMap.getOrDefault(i, 0).equals(0))
+                return false;
+        }
+
+        return true;
     }
 
     public static int subarraySumOptimised(int[] arr, int k) {
@@ -92,6 +122,25 @@ public class Day5 {
         return i-1;
     }
 
+    public static boolean checkDuplicate(int[] arr) {
+        HashMap<Integer, Integer> hashMap= new HashMap<>();
+        for(int a: arr){
+            if(hashMap.getOrDefault(a, 0) > 0)
+                return true;
+            hashMap.put(a, 1);
+        }
+         return false;
+    }
+
+    public static boolean checkDuplicateOptimised(int[] arr) {
+        HashSet<Integer> set = new HashSet<>();
+        for(int num : arr) {
+            if(!set.add(num)) return true;
+        }
+        return false;
+    }
+
+
 
     public static void main(String[] args){
 
@@ -130,6 +179,17 @@ public class Day5 {
         int num = 34;
         System.out.println("PPerfect square of " + squareWithoutSqrt(2));
 
+        String s = "anagram";
+        String t = "nagaram";
+        System.out.println(s + " and " + t + " are anagram: " + checkAnagram(s,t));
+
+        System.out.println(s + " and " + t + " are anagram: " + checkAnagramOptimised(s,t));
+
+        a = new int[]{1, 2, 3, 1};
+        System.out.println(Arrays.toString(a));
+        System.out.println("Array has duplicate: " + checkDuplicate(a));
+
+        System.out.println("Array has duplicate: " + checkDuplicateOptimised(a));
 
     }
 
