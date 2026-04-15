@@ -140,6 +140,14 @@ public class Day5 {
         return false;
     }
 
+    public static int findSingle(int[] arr) {
+        int number = arr[0];
+        for(int i = 0; i<arr.length -1; i++){
+            number = number ^ arr[i+1];
+        }
+        return number;
+    }
+
 
 
     public static void main(String[] args){
@@ -191,6 +199,14 @@ public class Day5 {
 
         System.out.println("Array has duplicate: " + checkDuplicateOptimised(a));
 
+        a = new int[]{1, 2, 3, 1, 2};
+
+        System.out.println(Arrays.toString(a));
+        result = findSingle(a);
+        if(result == -1)
+            System.out.println("There is no single element in array");
+        else
+            System.out.println("Single element in array is : " + result);
     }
 
 }
