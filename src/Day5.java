@@ -76,6 +76,22 @@ public class Day5 {
         return -1;
     }
 
+    public static int squareWithoutSqrt(int num) {
+        int i= 1;
+        int j = num/2;
+
+        while (i<=j){
+            int k = (i+ j)/2;
+            if(k*k == num)
+                return k;
+            else if (k*k <num)
+                i = k+1;
+            else
+                j=k-1;
+        }
+        return i-1;
+    }
+
 
     public static void main(String[] args){
 
@@ -110,6 +126,9 @@ public class Day5 {
             System.out.println("Element not found");
         else
             System.out.println("Element found at " + (result + 1));
+
+        int num = 34;
+        System.out.println("PPerfect square of " + squareWithoutSqrt(2));
 
 
     }
