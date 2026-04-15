@@ -60,6 +60,22 @@ public class Day5 {
         return count;
     }
 
+    public static int binarySearch(int[] arr, int target) {
+        int i= 0;
+        int j = arr.length-1;
+
+        while (i<=j){
+            int k = (i+ j)/2;
+            if(arr[k] == target)
+                return k;
+            else if (arr[k] <target)
+                i = k+1;
+            else
+                j=k-1;
+        }
+        return -1;
+    }
+
 
     public static void main(String[] args){
 
@@ -86,7 +102,14 @@ public class Day5 {
 
         System.out.println("Subarrays with sum " + k + " is " + subarraySumOptimised(a, k));
 
-
+        a = new int[]{1, 3, 5, 7};
+        System.out.println(Arrays.toString(a));
+        int target = 6;
+        int result = binarySearch(a, target);
+        if(result == -1)
+            System.out.println("Element not found");
+        else
+            System.out.println("Element found at " + (result + 1));
 
 
     }
