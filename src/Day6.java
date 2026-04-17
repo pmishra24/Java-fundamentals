@@ -94,6 +94,35 @@ public class Day6 {
         return node.getValue();
     }
 
+
+
+    public static Node delete(Node node, int value) {
+        if(node == null)  throw new IllegalArgumentException("Tree is empty or value not found");
+        if(node.getValue() == value){
+            if(node.getLeft() == null && node.getRight() == null) {
+                    node = null;
+            }
+            else if(node.getLeft() == null)
+                node = node.getRight();
+            else if(node.getRight() == null){
+                node = node.getLeft();
+            }
+            else{
+                int min = findMin(node.getRight());
+                node.setValue(min);
+                node.setRight(delete(node.getRight(), min));
+            }
+
+        }
+        else if(node.getValue() < value){
+            node.setRight(delete(node.getRight(), value));
+        }
+        else if(node.getValue() > value){
+            node.setLeft(delete(node.getLeft(), value));
+        }
+        return node;
+    }
+
     public static  void main(String[] args){
         int num = 4;
         System.out.println("Factorial of " + num + " is " + factorial(num));
@@ -105,8 +134,9 @@ public class Day6 {
         Node node3 = new Node(3);
         Node node4 = new Node(7);
         Node node5 = new Node(20);
+        Node node6 = new Node(12);
         Node node1 = new Node(5, node3, node4);
-        Node node2 = new Node(15, null , node5);
+        Node node2 = new Node(15, node6 , node5);
         Node root = new Node(10, node1, node2);
         inorder(root);
         System.out.println();
@@ -131,6 +161,8 @@ public class Day6 {
 
         System.out.println("Minimum value in tree is " + findMin(root));
         System.out.println("Maximum value in tree is " + findMax(root));
+
+
     }
 
 }
