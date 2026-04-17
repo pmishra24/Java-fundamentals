@@ -144,6 +144,12 @@ public class Day6 {
         }
     }
 
+    public static int height(Node node) {
+        if(node == null)
+            return 0;
+        return 1+ Math.max(height(node.getLeft()), height(node.getRight()));
+    }
+
     public static  void main(String[] args){
         int num = 4;
         System.out.println("Factorial of " + num + " is " + factorial(num));
@@ -201,6 +207,14 @@ public class Day6 {
 //        bfs(start);
 
         bfs(root);
+
+        System.out.println();
+        int height = height(root);
+        if(height != -1){
+            System.out.println("Height of the tree is " + height);
+        }
+        else
+            System.out.println("Tree is empty");
 
 
     }
