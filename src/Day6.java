@@ -1,9 +1,13 @@
 import java.awt.*;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class Day6 {
 
     static HashMap<Long, Long> cache= new HashMap<>();
+    static Queue<Node> queue = new LinkedList<>();
 
     public static int factorial(int num){
         if(num <= 1)
@@ -123,6 +127,23 @@ public class Day6 {
         return node;
     }
 
+    public static void bfs(Node root) {
+        if (root == null) return;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            System.out.print(current.getValue() + ", ");
+
+            if (current.getLeft() != null)
+                queue.add(current.getLeft());
+            if (current.getRight() != null)
+                queue.add(current.getRight());
+        }
+    }
+
     public static  void main(String[] args){
         int num = 4;
         System.out.println("Factorial of " + num + " is " + factorial(num));
@@ -161,6 +182,25 @@ public class Day6 {
 
         System.out.println("Minimum value in tree is " + findMin(root));
         System.out.println("Maximum value in tree is " + findMax(root));
+
+//        LinkedListNode start= new LinkedListNode();
+//        LinkedListNode nodeL1 = new LinkedListNode(10);
+//        LinkedListNode nodeL2 = new LinkedListNode(5);
+//        LinkedListNode nodeL3 = new LinkedListNode(15);
+//        LinkedListNode nodeL4 = new LinkedListNode(3);
+//        LinkedListNode nodeL5 = new LinkedListNode(7);
+//        LinkedListNode nodeL6 = new LinkedListNode(20);
+//
+//        start.setNext(nodeL1);
+//        nodeL1.setNext(nodeL2);
+//        nodeL2.setNext(nodeL3);
+//        nodeL3.setNext(nodeL4);
+//        nodeL4.setNext(nodeL5);
+//        nodeL5.setNext(nodeL6);
+//
+//        bfs(start);
+
+        bfs(root);
 
 
     }
