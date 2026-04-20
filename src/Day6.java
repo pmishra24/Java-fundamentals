@@ -150,6 +150,13 @@ public class Day6 {
         return 1+ Math.max(height(node.getLeft()), height(node.getRight()));
     }
 
+    public static boolean isValidBST(Node node, int min, int max) {
+        if(node == null) return true;
+
+        return isValidBST(node.getLeft(), min, node.getValue())
+                && isValidBST(node.getRight(), node.getValue(), max);
+    }
+
     public static  void main(String[] args){
         int num = 4;
         System.out.println("Factorial of " + num + " is " + factorial(num));
