@@ -157,6 +157,16 @@ public class Day6 {
                 && isValidBST(node.getRight(), node.getValue(), max);
     }
 
+    public static Node lca(Node node, int val1, int val2) {
+        if(node == null) return null;
+        if(val1 > node.getValue() && val2 > node.getValue())
+            return lca(node.getRight(), val1, val2);
+        else if(val1 < node.getValue() && val2 < node.getValue())
+            return lca(node.getLeft(), val1, val2);
+        else
+            return node;
+    }
+
     public static  void main(String[] args){
         int num = 4;
         System.out.println("Factorial of " + num + " is " + factorial(num));
