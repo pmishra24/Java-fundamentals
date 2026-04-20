@@ -8,6 +8,8 @@ public class Day6 {
 
     static HashMap<Long, Long> cache= new HashMap<>();
     static Queue<Node> queue = new LinkedList<>();
+    static int count = 0;
+    static int value = 0;
 
     public static int factorial(int num){
         if(num <= 1)
@@ -71,7 +73,7 @@ public class Day6 {
 
     public static Node insert(Node node, int value) {
         if(node == null){
-            return node = new Node(value);
+            return new Node(value);
         }
         if(node.getValue() < value){
             node.setRight(insert(node.getRight(), value));
@@ -167,6 +169,23 @@ public class Day6 {
             return node;
     }
 
+    public static int kthSmallest(Node node, int k) {
+        if(node == null) return count;
+        if(count<k)
+        {
+            kthSmallest(node.getLeft(), k);
+            if(count >= k) return value;    // ← ADD THIS
+            count++;
+            System.out.println("Count "+ count + ", Value " + node.getValue() + ", k " + k);
+            if(count == k){
+                value = node.getValue();
+                return value;
+            }
+            kthSmallest(node.getRight(), k);
+        }
+        return value;
+    }
+
     public static  void main(String[] args){
         int num = 4;
         System.out.println("Factorial of " + num + " is " + factorial(num));
@@ -233,7 +252,7 @@ public class Day6 {
         else
             System.out.println("Tree is empty");
 
-
+        System.out.println(kthSmallest(root, 3));
     }
 
 }
